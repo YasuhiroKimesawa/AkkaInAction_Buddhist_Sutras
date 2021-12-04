@@ -15,6 +15,8 @@ class SilentActor extends Actor{
   def receive = {
     case SilentMessage(data: String) =>
       internalState = internalState :+ data
+    case GetState(receiver: ActorRef) =>
+      receiver ! internalState
   }
 
   def state = internalState
