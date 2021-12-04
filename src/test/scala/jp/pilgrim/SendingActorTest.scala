@@ -23,7 +23,7 @@ class SendingActorTest extends TestKit(ActorSystem("testsystem"))
       def randomEvents() = (0 until size).map( _ => Event(Random.nextInt(maxInclusive))).toVector
 
       val unsorted = randomEvents()
-      val sortEvents = SortEvnet(unsorted)
+      val sortEvents = SortEvents(unsorted)
       sendingActor ! sortEvents
 
       expectMsgPF(){
