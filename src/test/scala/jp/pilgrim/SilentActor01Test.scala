@@ -12,7 +12,7 @@ class SilentActor01Test extends TestKit(ActorSystem("testSystem"))
   // SilentActor
   "A Silent Actor" must {
     "change state when it receives a message, shingle threaded" in {
-      import jp.pilgrim.SilentActor._
+      import SilentActor._
 
       val silentActor = TestActorRef[SilentActor]
       silentActor ! SilentMessage("wisper")
@@ -21,6 +21,7 @@ class SilentActor01Test extends TestKit(ActorSystem("testSystem"))
     }
 
     "change state when it receives a message, multi-threaded" in {
+
       fail("not implemented yet")
     }
   }

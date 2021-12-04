@@ -1,9 +1,21 @@
 package jp.pilgrim
 
-import akka.actor.Actor
+import akka.actor.{Actor, ActorRef}
+
+object SilentActor{
+  case class SilentMessage(data: String)
+  case class GetState(receiver: ActorRef)
+}
 
 class SilentActor extends Actor{
-  def receive {
-    case msg =>
+  import SilentActor._
+
+  var internalState = Vector[String]()
+
+  def receive = {
+    case SilentMessage(data: String) =>
+      internalState = internalState :+ data
   }
+
+  def state = internalState
 }
